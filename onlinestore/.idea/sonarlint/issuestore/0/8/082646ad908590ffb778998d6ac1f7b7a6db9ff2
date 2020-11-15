@@ -1,0 +1,6 @@
+
+Ç
+java:S1130-"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(òﬁÃ¢
+[	java:S112-"FDefine and throw a dedicated exception instead of using a generic one.(òﬁÃ¢
+Å
+java:S46016"dReorder the URL patterns from most to less specific, the pattern "/*/**" should occurs before "/**".(®´Ò±8≈Í¨ó‹.

@@ -1,0 +1,21 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a style="color: aliceblue; font-size:xx-large;"  class="navbar-brand" routerLink="">Online Store</a></div>
+
+        <ul class="navbar-nav" >
+            <li><a  routerLink="/categories" class="nav-link">Categories</a></li>
+            <li><a  routerLink="/view-productList" class="nav-link">Products</a></li>
+        </ul>
+            
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li *ngIf="authority === 'user'">
+                <a  routerLink="" (click)="logout()">Logout</a>
+            </li>
+            <li *ngIf="authority === 'admin'">
+                <a  routerLink="" (click)="logout()">Logout</a>
+            </li>
+            <li><a  routerLink="/login" class="nav-link">Login</a></li>
+            <li><a  routerLink="/register" class="nav-link">Register</a></li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+    font-style: oblique;
+    border: 2px solid royalblue;
+    border-radius: 5px;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;
+  }

@@ -1,0 +1,61 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div id="page-container">
+   <div id="content-wrap">
+      <div *ngIf="isLoggedIn; else loggedOut">
+         <div class="logged-in">
+            <h3>You are now logged in as {{roles}}.</h3>
+         </div>
+         <div class="shopping">
+            <h1> Happy shopping</h1>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="page-container">
+   <div id="content-wrap">
+      <ng-template #loggedOut>
+         <div class="sidenav">
+            <div class="login-main-text">
+               <h1>Online Shop<br> Login Page</h1>
+               <p>Login or register from here.</p>
+            </div>
+         </div>
+         <div class="main">
+            <div class="col-md-6 col-sm-12">
+               <div class="login-form">
+                  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                     <div class="form-group">
+                        <label>User Name</label>
+                        <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="form.username"
+                           #username="ngModel" required [ngModelOptions]="{standalone: true}">
+                        <div *ngIf="f.submitted && username.invalid">
+                           <div *ngIf="username.errors.required">Username is required</div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="form.password"
+                           #password="ngModel" required [ngModelOptions]="{standalone: true}">
+                        <div *ngIf="f.submitted && password.invalid">
+                           <div *ngIf="password.errors.required">Password is required</div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <button type="submit" class="btn btn-black" value="Login">Login</button>
+                        <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+                           Login failed: {{errorMessage}}
+                        </div>
+                     </div>
+
+                     <button type="submit" routerLink="/register" class="btn btn-secondary">Register</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </ng-template>
+   </div>
+</div>

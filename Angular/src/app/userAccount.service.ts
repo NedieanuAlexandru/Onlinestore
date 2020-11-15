@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UserAccountData } from './userAccountData';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserAccountService {
+
+  constructor(private httpClient: HttpClient) { }
+
+  public getUserAccounts(): Observable<UserAccountData[]>{
+    return this.httpClient.get<UserAccountData[]>('http://localhost:8080/getUsersAccounts');
+   }
+   
+   public getUserAccount(id: number): Observable<UserAccountData> {
+    return this.httpClient.get<UserAccountData>('http://localhost:8080/getUserAccount/' + id);
+  }
+
+  public getUserAccountString(username: String): Observable<UserAccountData> {
+    return this.httpClient.get<UserAccountData>('https://localhost:8080/getUsername/' + username);
+  }
+
+  public addUserAccount(userAccount: UserAccountData): Observable<any>{
+    return this.httpClient.post<UserAccountData>('http://localhost:8080/addUserAccount', userAccount);
+  }
+
+  public deleteUserAccount(id: number): Observable<string>{
+    return this.httpClient.delete<string>('http://localhost:8080/deleteUserAccount/' + id);
+  }
+
+  public editUserAccount(userAccount: UserAccountData): Observable<any>{
+    return this.httpClient.put<any>('http://localhost:8080/editUserAccount', userAccount);
+ }
+}

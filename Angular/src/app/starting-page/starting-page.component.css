@@ -1,0 +1,18 @@
+#page-container {
+    position: relative;
+    min-height: 58vh;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;
+}
+
+#welcome-id {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    color: aqua;
+    text-align: center;
+    font-size: 72px;
+    align-self: center;
+    margin-top: 80px;
+}

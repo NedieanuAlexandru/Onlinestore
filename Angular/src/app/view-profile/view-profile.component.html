@@ -1,0 +1,33 @@
+<div class="profile" role="profile">
+    <h2>Your profile</h2>
+</div>
+<div class="div-login">
+    <p>Username: {{userAccount.username}}</p>
+    <p>Password: {{userAccount.password}}</p>
+    <p>City: {{userAccount.city}}</p>
+</div>
+<hr>
+<div class="div-homeAddress">
+    <p>Your home address:</p>
+    <br>
+    <p>Country: {{userAccount.userAdress.country}}</p>
+    <p>City: {{userAccount.userAdress.city}}</p>
+    <p>Street: {{userAccount.userAdress.street}}</p>
+    <p>Zipcode: {{userAccount.userAdress.zipcode}}</p>
+</div>
+<hr>
+<div class="div-DeliveryAddress">
+    <p>Your delivery address</p>
+    <br>
+    <p>Country: {{userAccount.deliveryAdress.country}}</p>
+    <p>City: {{userAccount.deliveryAdress.city}}</p>
+    <p>Street: {{userAccount.deliveryAdress.street}}</p>
+    <p>Zipcode: {{userAccount.deliveryAdress.zipcode}}</p>
+</div>
+<div>
+    <p>Logo: {{userAccount.logotype}}</p>
+</div>
+<div>
+        <button routerLink="/edit-user-accout/{{userAccount.id}}" class="btn btn-success">EDIT</button>
+        <button (click)="delete(userAccount.id)" class="btn btn-danger">DELETE</button>
+</div>
