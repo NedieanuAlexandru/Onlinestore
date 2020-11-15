@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { TokenStorageService } from '../auth/token-storage.service';
+import { UserAccountService } from '../userAccount.service';
+import { UserAccountData } from '../userAccountData';
 
 @Component({
   selector: 'app-menu',
@@ -9,20 +11,31 @@ import { TokenStorageService } from '../auth/token-storage.service';
 })
 export class MenuComponent implements OnInit {
 
+  userAccount: UserAccountData = new UserAccountData();
+
   info: any;
   authority: string;
   tokenStorageBlunt: any;
   roles: any;
  
-  constructor(private token: TokenStorageService, private route:Router) { }
+  constructor(private token: TokenStorageService, private route:Router,
+    private activateRoutes: ActivatedRoute, private userAccountService: UserAccountService,
+
+    ) { }
  
   ngOnInit() {
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),
       authorities: this.token.getAuthorities()
-      
     };
+
+    let id = this.activateRoutes.snapshot.paramMap.get("id");
+    console.log("Id: " + id);
+    this.userAccountService.getUserAccount(Number(id)).subscribe(userResult => {
+      this.userAccount = userResult;
+    })
+
     if (this.token.getToken()) {
       this.roles = this.token.getAuthorities();
       this.roles.every(role => {

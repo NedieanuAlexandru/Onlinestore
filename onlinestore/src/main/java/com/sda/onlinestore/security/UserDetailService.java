@@ -38,7 +38,6 @@ public class UserDetailService implements UserDetailsService {
         String password = userCredentialModel.getPassword();
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 
-        //ROLE_ADMIN is important to be picked up by hasRole from @PreAuthorize in DummyConteoller
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_" + userCredentialModel.getRoletype().name().toUpperCase());
         authorities.add(simpleGrantedAuthority);
         return new User(userName, password, authorities);
